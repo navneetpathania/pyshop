@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post">
+    {% csrf_token %}
+    <table>
+        <input type="hidden" name="id" value="{{records.id}}">
+        <tr>
+            <th>Name</th>
+        <td><input type="text" name="name" value="{{records.name}}"></td>
+        </tr>
+         <tr>
+            <th>Price</th>
+        <td><input type="number" name="price" value="{{records.price}}"></td>
+        </tr>
+         <tr>
+            <th>Stock</th>
+        <td><input type="number" name="stock" value="{{records.stock}}"></td>
+        </tr>
+         <tr>
+            <th>Description</th>
+        <td><textarea name="description" cols="30" rows="10">{{records.description}}</textarea></td>
+        </tr>
+        <tr><input type="file" name="image" value="{{records.image}}"></tr>
+        <tr>
+            <tr>
+        <td><input type="submit" value="save"></td>
+        <td><a href="/products">cancel</a></td>
+    </tr>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

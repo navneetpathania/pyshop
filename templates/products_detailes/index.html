@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>name</th>
+                <th>Price</th>
+                <th>stock</th>
+                <th>description</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        <tr>
+            <tbody>
+        {% for submit in records %}
+            <tr>
+                <td>{{submit.id}}</td>
+                <td>{{submit.name}}</td>
+                <td>{{submit.price}}</td>
+                <td>{{submit.stock}}</td>
+                <td>{{submit.description}}</td>
+                <td>{{submit.image}}</td>
+                <td><a href="#" onclick="editRecord({{submit.id}})">Edit</a>
+                    <a href="#"  onclick="deleteRecord({{submit.id}})">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+        </tr>
+        </thead>
+    </table>
+    <a href="/products/add/">Add</a>
+</body>
+
+<script>
+    function deleteRecord(submitid)
+    {
+        var status = confirm("are you sure");
+
+    if (status)
+    {
+     console.log("record deleted");
+     window.location = "http://127.0.0.1:8000/products/delete/" + submitid
+    }
+    else
+    {
+        console.log("not deleted")
+     }
+    }
+
+    function editRecord(submitid)
+    {
+        window.location = "http://127.0.0.1:8000/products/edit/" + submitid
+    }
+
+
+</script>
+</html>
